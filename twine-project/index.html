@@ -198,23 +198,41 @@ a.link-internal:hover { background-color: var(--hover-color); color: #fff !impor
     to { opacity: 1; transform: translateY(0); }
 }
 
+
 /* ==========================================
-   6. 🔥 手機版專屬優化 (關鍵！)
+   🔥 手機版終極響應式修復
    ========================================== */
 @media screen and (max-width: 768px) {
-    #passages { 
-        max-width: 90% !important; 
-        margin: 20px auto !important; 
-        padding: 20px !important; 
-        border-radius: 16px !important;
+    /* 1. 強制讓容器適應手機螢幕，不要被撐開 */
+    #passages {
+        width: 90% !important;        /* 左右留一點呼吸空間 */
+        max-width: 600px !important;  /* 不要超過手機寬度 */
+        margin: 20px auto !important; /* 確保垂直居中 */
+        padding: 20px !important;     /* 減少手機上的 padding，避免字太擠 */
+        box-sizing: border-box !important; /* 關鍵：確保 padding 不會把容器撐破 */
     }
-    
-    /* 手機上縮小字體提升閱讀體驗 */
-    #passages { font-size: 16px !important; }
-    
-    /* 數值面板在手機上稍微縮小 */
-    .stats-container { padding: 10px !important; }
-    .stat-avatar { width: 40px !important; height: 40px !important; }
+
+    /* 2. 調整手機上的字體大小 */
+    #passages, #passages p {
+        font-size: 16px !important;   /* 手機閱讀建議 16px，避免過大 */
+        line-height: 1.6 !important;
+    }
+
+    /* 3. 處理圖片：讓手機上的圖片不要超出玻璃框 */
+    .passage img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 4. 處理對話框：讓手機上的頭像跟文字分行顯示，閱讀更清楚 */
+    .dialogue-wrapper {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .avatar-img {
+        margin-right: 0 !important;
+        margin-bottom: 10px !important;
+    }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,200" size="100,100">&lt;&lt;cacheaudio &quot;my_bgm&quot; &quot;bgm_store.mp3&quot;&gt;&gt;
 
 &lt;&lt;audio &quot;my_bgm&quot; play loop&gt;&gt;
