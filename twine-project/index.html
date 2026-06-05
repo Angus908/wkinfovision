@@ -229,7 +229,11 @@ hr { border: 0; border-top: 1px dashed #c8bfb3; margin: 25px 0; }
     }
     .avatar-img { margin-right: 0 !important; margin-bottom: 10px !important; }
     .stats-container { padding: 10px !important; }
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,200" size="100,100">&lt;&lt;cacheaudio &quot;my_bgm&quot; &quot;bgm_store.mp3&quot;&gt;&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* 讓手機正確適應寬度並啟用縮放控制 */
+var meta = document.createElement('meta');
+meta.name = "viewport";
+meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+document.getElementsByTagName('head')[0].appendChild(meta);</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,200" size="100,100">&lt;&lt;cacheaudio &quot;my_bgm&quot; &quot;bgm_store.mp3&quot;&gt;&gt;
 
 &lt;&lt;audio &quot;my_bgm&quot; play loop&gt;&gt;
 
