@@ -105,7 +105,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<tw-storydata name="晴天花舍" startnode="1" creator="Twine" creator-version="2.12.0" format="SugarCube" format-version="2.37.3" ifid="1CFD9E27-E81A-414A-AB44-360C204D72C6" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* ==========================================
-   1. 品牌變數
+   1. 品牌變數與全域基礎
    ========================================== */
 :root {
     --main-bg: #f7f3ed;
@@ -115,27 +115,36 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     --accent-red: #b55243;
 }
 
-/* ==========================================
-   2. 全域基礎 (背景圖已整合)
-   ========================================== */
 html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* 全域背景設定 */
     background: url("bg.jpg") no-repeat center center fixed !important;
     background-size: cover !important;
     color: var(--text-color) !important;
     font-family: "PingFang HK", "Heiti TC", "Microsoft JhengHei", sans-serif;
     font-size: 18px;
     line-height: 1.8;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    overflow-x: hidden;
 }
 
 #ui-bar { display: none !important; }
-#story { margin: 0; padding: 0; width: 100%; min-height: 100vh; }
+
+/* 啟動 Flexbox 來實現全頁面的正中對齊 */
+#story { 
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
 
 /* ==========================================
-   3. 玻璃質感框體 (PC 與 手機共用邏輯)
+   2. 玻璃質感框體 (Passages)
    ========================================== */
 #passages {
     background: rgba(255, 255, 255, 0.4) !important; 
@@ -145,15 +154,18 @@ html, body {
     border-radius: 20px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
     padding: 35px !important;
-    max-width: 650px !important;
+    
+    /* 確保置中佈局 */
     width: 90% !important;
-    margin: 50px auto !important;
+    max-width: 650px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
 }
 
 #passages, #passages p { color: #2c2c2c !important; }
 
 /* ==========================================
-   4. 元件庫 (按鈕、對話框、數值)
+   3. 元件庫 (按鈕、對話框、數值)
    ========================================== */
 a.link-internal, a.link-external {
     color: var(--primary-color) !important;
@@ -190,7 +202,7 @@ a.link-internal:hover { background-color: var(--hover-color); color: #fff !impor
 .stat-label { font-size: 12px; color: #8c867e; margin-top: 2px; }
 
 /* ==========================================
-   5. 轉場動畫
+   4. 動畫與排版
    ========================================== */
 .passage { animation: fadeIn 0.8s ease-in-out forwards; }
 @keyframes fadeIn {
@@ -198,41 +210,25 @@ a.link-internal:hover { background-color: var(--hover-color); color: #fff !impor
     to { opacity: 1; transform: translateY(0); }
 }
 
+strong { color: var(--accent-red); }
+hr { border: 0; border-top: 1px dashed #c8bfb3; margin: 25px 0; }
+.passage img { max-width: 100% !important; border-radius: 10px; margin: 15px 0; }
 
 /* ==========================================
-   🔥 手機版終極響應式修復
+   5. 手機版優化 (RWD)
    ========================================== */
 @media screen and (max-width: 768px) {
-    /* 1. 強制讓容器適應手機螢幕，不要被撐開 */
-    #passages {
-        width: 90% !important;        /* 左右留一點呼吸空間 */
-        max-width: 600px !important;  /* 不要超過手機寬度 */
-        margin: 20px auto !important; /* 確保垂直居中 */
-        padding: 20px !important;     /* 減少手機上的 padding，避免字太擠 */
-        box-sizing: border-box !important; /* 關鍵：確保 padding 不會把容器撐破 */
+    #passages { 
+        padding: 20px !important; 
+        font-size: 16px !important; 
     }
-
-    /* 2. 調整手機上的字體大小 */
-    #passages, #passages p {
-        font-size: 16px !important;   /* 手機閱讀建議 16px，避免過大 */
-        line-height: 1.6 !important;
-    }
-
-    /* 3. 處理圖片：讓手機上的圖片不要超出玻璃框 */
-    .passage img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
-    /* 4. 處理對話框：讓手機上的頭像跟文字分行顯示，閱讀更清楚 */
+    
     .dialogue-wrapper {
         flex-direction: column !important;
         align-items: center !important;
     }
-    .avatar-img {
-        margin-right: 0 !important;
-        margin-bottom: 10px !important;
-    }
+    .avatar-img { margin-right: 0 !important; margin-bottom: 10px !important; }
+    .stats-container { padding: 10px !important; }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,200" size="100,100">&lt;&lt;cacheaudio &quot;my_bgm&quot; &quot;bgm_store.mp3&quot;&gt;&gt;
 
 &lt;&lt;audio &quot;my_bgm&quot; play loop&gt;&gt;
