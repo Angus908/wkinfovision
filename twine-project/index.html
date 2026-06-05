@@ -121,7 +121,6 @@ html, body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    /* 全域背景設定 */
     background: url("bg.jpg") no-repeat center center fixed !important;
     background-size: cover !important;
     color: var(--text-color) !important;
@@ -132,15 +131,15 @@ html, body {
 
 #ui-bar { display: none !important; }
 
-/* 啟動 Flexbox 來實現全頁面的正中對齊 */
+/* ==========================================
+   ★ 修正手機偏右：移除 flex，改回 block
+   ========================================== */
 #story { 
-    margin: 0; 
-    padding: 0; 
-    width: 100%; 
-    min-height: 100vh; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    margin: 0 auto !important;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: block !important;   /* ← 關鍵修正 */
 }
 
 /* ==========================================
@@ -154,11 +153,11 @@ html, body {
     border-radius: 20px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
     padding: 35px !important;
-    
-    /* 確保置中佈局 */
+
     width: 90% !important;
     max-width: 650px !important;
-    margin: 0 !important;
+    margin-left: auto !important;   /* ← 強制置中 */
+    margin-right: auto !important;  /* ← 強制置中 */
     box-sizing: border-box !important;
 }
 
@@ -181,7 +180,11 @@ a.link-internal, a.link-external {
     transition: all 0.3s ease;
 }
 
-a.link-internal:hover { background-color: var(--hover-color); color: #fff !important; transform: translateY(-2px); }
+a.link-internal:hover { 
+    background-color: var(--hover-color); 
+    color: #fff !important; 
+    transform: translateY(-2px); 
+}
 
 .dialogue-wrapper { display: flex; align-items: flex-start; margin: 25px 0; }
 .avatar-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #e6e1da; margin-right: 15px; }
@@ -229,7 +232,8 @@ hr { border: 0; border-top: 1px dashed #c8bfb3; margin: 25px 0; }
     }
     .avatar-img { margin-right: 0 !important; margin-bottom: 10px !important; }
     .stats-container { padding: 10px !important; }
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* 讓手機正確適應寬度並啟用縮放控制 */
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* 讓手機正確適應寬度並啟用縮放控制 */
 var meta = document.createElement('meta');
 meta.name = "viewport";
 meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
