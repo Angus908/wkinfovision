@@ -218,6 +218,7 @@ hr { border: 0; border-top: 1px dashed #c8bfb3; margin: 25px 0; }
 .passage img { max-width: 100% !important; border-radius: 10px; margin: 15px 0; }
 
 
+-----------------------------------------
 
 /* 導流按鈕容器 */
 .nav-button {
@@ -240,6 +241,28 @@ hr { border: 0; border-top: 1px dashed #c8bfb3; margin: 25px 0; }
 .nav-button:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
+}
+
+
+-------------------------------
+
+/* 廣告 Banner 的容器 */
+.ad-banner {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 12px; /* 稍微加大一點點圓角，更有現代感 */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    /* 確保容器也不會無限放大 */
+    max-width: 600px;
+}
+
+/* 確保圖片自動適應寬度 */
+.ad-banner img {
+    width: 100%;         /* 寬度填滿 ad-banner 容器 */
+    height: auto;        /* 高度自動縮放保持比例 */
+    display: block;      /* 消除圖片下方可能出現的微小空隙 */
 }
 
 
@@ -1050,6 +1073,12 @@ Mochi轉頭望我：「芷晴姐姐，真係唔該晒妳。如果我哋自己搵
     前往 Patreon 看其他世界
 &lt;/a&gt;
 
+
+&lt;div class=&quot;ad-banner&quot;&gt;
+    &lt;a href=&quot;https://www.mochidog.com.hk&quot; target=&quot;_blank&quot;&gt;
+        &lt;img src=&quot;mcd_bn.png&quot; alt=&quot;麻糬狗寵物屋 - 立即逛逛&quot;&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
 
 
 [[重新開始|Start]]</tw-passagedata></tw-storydata>
